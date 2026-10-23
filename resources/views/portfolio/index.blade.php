@@ -622,10 +622,37 @@
                     <div class="gaming-grid">
                         @foreach($portfolio['gaming'] as $game)
                             <div class="game-card">
-                                <span class="game-name">{{ $game['name'] }}</span>
-                                <div class="game-meta">
-                                    <span>{{ $game['category'] }}</span>
-                                    <span style="color: var(--emerald-light);">{{ $game['role'] }}</span>
+                                <div>
+                                    <div class="game-header">
+                                        <h4 class="game-name">{{ $game['name'] }}</h4>
+                                        @if(isset($game['platform']))
+                                            <span class="game-platform-badge">{{ $game['platform'] }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="game-role">{{ $game['role'] }}</div>
+                                    <p style="font-size: 0.78rem; color: var(--text-dim); font-family: var(--font-mono); margin-top: 4px;">{{ $game['category'] }}</p>
+                                </div>
+
+                                <div class="game-player-box">
+                                    @if(isset($game['ign']) && $game['ign'])
+                                        <div class="game-ign-row">
+                                            <div style="display: flex; flex-direction: column; overflow: hidden;">
+                                                <span style="font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; font-family: var(--font-mono);">Player ID / IGN</span>
+                                                <span class="game-ign-text">{{ $game['ign'] }}</span>
+                                            </div>
+                                            <button type="button" class="copy-btn" data-copy="{{ $game['ign'] }}" data-label="{{ $game['name'] }} IGN" title="Copy in-game name/ID">
+                                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                                <span>Copy</span>
+                                            </button>
+                                        </div>
+                                    @endif
+
+                                    @if(isset($game['profile_url']) && $game['profile_url'])
+                                        <a href="{{ $game['profile_url'] }}" target="_blank" rel="noopener" class="game-link-btn">
+                                            <span>{{ $game['link_label'] ?? 'View Profile' }}</span>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
