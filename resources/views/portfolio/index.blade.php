@@ -230,7 +230,8 @@
                                     <span class="rack-stat-val" id="rackTemp">41°C</span>
                                 </div>
                             </div>
-                            <div>
+                            <div class="rack-node-tag">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                                 <span>Dell OptiPlex</span>
                             </div>
                         </div>
@@ -264,7 +265,7 @@
                                 <img src="{{ asset($portfolio['images']['libraguard_seal']) }}" alt="University of Eastern Pangasinan LibraGuard Official Seal" class="capstone-logo-img">
                             </div>
                             <div>
-                                <span class="capstone-role-badge">Lead Architect & Developer</span>
+                                <span class="capstone-role-badge">Project Leader</span>
                                 <h3 style="margin-top: 10px; font-family: var(--font-display); font-size: 1.25rem;">LibraGuard</h3>
                                 <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">University of Eastern Pangasinan</p>
                             </div>

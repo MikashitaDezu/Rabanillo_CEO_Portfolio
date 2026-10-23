@@ -157,7 +157,7 @@ code, pre {
 
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
@@ -231,16 +231,17 @@ code, pre {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
   list-style: none;
 }
 
 .nav-link {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-muted);
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
   transition: color var(--transition-fast);
 }
 
@@ -313,7 +314,7 @@ code, pre {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 
 .hero-content {
@@ -436,40 +437,42 @@ code, pre {
 
 .hero-meta-strip {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 24px;
-  padding-top: 14px;
+  gap: 12px 20px;
+  padding-top: 18px;
   border-top: 1px solid var(--border-subtle);
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-family: var(--font-mono);
 }
 
 .hero-meta-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
+  white-space: nowrap;
 }
 
 /* Hero Profile & Rack Widget */
 .hero-visual {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .profile-card-header {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border-medium);
   background: var(--bg-card);
   backdrop-filter: blur(14px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 18px 22px;
+  gap: 18px;
+  padding: 16px 20px;
 }
 
 .profile-photo-wrapper {
@@ -647,28 +650,42 @@ code, pre {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 9px 16px;
-  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.45);
   border-top: 1px solid #233040;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: #64748b;
+  gap: 12px;
 }
 
 .rack-live-stats {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .rack-stat-pill {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  white-space: nowrap;
 }
 
 .rack-stat-val {
   color: var(--emerald-light);
   font-weight: 600;
+}
+
+.rack-node-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -843,6 +860,7 @@ code, pre {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  align-items: stretch;
 }
 
 .arch-card {
@@ -853,6 +871,7 @@ code, pre {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  height: 100%;
   transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -909,9 +928,10 @@ code, pre {
    ========================================================================== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
   margin-top: 36px;
+  align-items: stretch;
 }
 
 .project-card {
@@ -923,6 +943,7 @@ code, pre {
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  height: 100%;
   transition: all var(--transition-normal);
   backdrop-filter: blur(10px);
   position: relative;
@@ -982,8 +1003,9 @@ code, pre {
    ========================================================================== */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 28px;
+  align-items: stretch;
 }
 
 .service-card {
@@ -993,7 +1015,9 @@ code, pre {
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 18px;
+  height: 100%;
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
@@ -1315,7 +1339,8 @@ code, pre {
 .beyond-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 28px;
+  gap: 24px;
+  align-items: stretch;
 }
 
 .gallery-primary-card {
@@ -1325,13 +1350,13 @@ code, pre {
   border: 1px solid var(--border-medium);
   box-shadow: var(--shadow-lg);
   cursor: pointer;
+  height: 100%;
+  min-height: 460px;
 }
 
 .gallery-img {
   width: 100%;
   height: 100%;
-  min-height: 380px;
-  max-height: 480px;
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
@@ -1347,7 +1372,7 @@ code, pre {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 32px;
+  padding: 28px;
 }
 
 .gallery-tag {
@@ -1374,7 +1399,8 @@ code, pre {
 .gallery-side-stack {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
+  height: 100%;
 }
 
 .gallery-side-card {
@@ -1384,6 +1410,7 @@ code, pre {
   border: 1px solid var(--border-subtle);
   flex: 1;
   cursor: pointer;
+  min-height: 210px;
 }
 
 .gallery-side-card:hover .gallery-img {
@@ -1398,6 +1425,7 @@ code, pre {
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 18px;
   margin-top: 24px;
+  align-items: stretch;
 }
 
 .game-card {
@@ -1409,6 +1437,7 @@ code, pre {
   flex-direction: column;
   justify-content: space-between;
   gap: 14px;
+  height: 100%;
   transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;

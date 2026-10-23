@@ -54,7 +54,7 @@ class PortfolioController extends Controller
             'node' => 'dell-optiplex-proxmox',
             'uptime' => '42 days, 16 hours, 28 mins',
             'cpu_usage' => rand(12, 28) . '%',
-            'ram_usage' => '5.8 GB / 16.0 GB (36%)',
+            'ram_usage' => '5.8G / 16G (36%)',
             'storage_health' => '100% SMART OK',
             'temp' => rand(38, 44) . '°C',
             'tunnel_status' => 'Cloudflare Zero Trust Ingress Active',
