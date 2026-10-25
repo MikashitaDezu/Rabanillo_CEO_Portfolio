@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class PortfolioController extends Controller
 {
@@ -32,7 +35,26 @@ class PortfolioController extends Controller
 
         $validated['ip_address'] = $request->ip();
 
-        ContactMessage::create($validated);
+        $saved = ContactMessage::create($validated);
+
+        try {
+            $subject = Str::limit(preg_replace('/\s+/', ' ', $saved->subject ?: 'New message'), 80);
+
+            $body = "New message from your portfolio\n\n"
+                . "Name: {$saved->name}\n"
+                . "Email: {$saved->email}\n"
+                . 'Phone: ' . ($saved->phone ?: '-') . "\n"
+                . "IP: {$saved->ip_address}\n\n"
+                . $saved->message;
+
+            Mail::raw($body, function ($mail) use ($saved, $subject) {
+                $mail->to(config('mail.from.address'))
+                    ->replyTo($saved->email, $saved->name)
+                    ->subject('Portfolio: ' . $subject);
+            });
+        } catch (\Throwable $e) {
+            Log::error('Contact mail failed: ' . $e->getMessage());
+        }
 
         if ($request->wantsJson() || $request->ajax()) {
             return response()->json([
